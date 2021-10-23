@@ -9,11 +9,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>inacap</groupId>
-	<artifactId>rest-api-demo</artifactId>
+	<artifactId>dal-api-customer-recero</artifactId>
 	<version>1.0.0</version>
 	<packaging>${packaging.type}</packaging>
-	<name>rest-api-demo</name>
-	<description>Demo project for Spring Boot + swagger integration</description>
+	<name>dal-api-customer</name>
+	<description>Api Created to Corporation Recero Recycle.</description>
 
 	<distributionManagement>
 		<repository>
@@ -162,20 +162,21 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<inputSpec>${project.basedir}/swagger/rest-api-demo-spec-definition.yml</inputSpec>
+							<inputSpec>${project.basedir}/swagger/rest-api-definition-master.yml</inputSpec>
 							<language>spring</language>
 							<generateApis>true</generateApis>
 							<generateModels>true</generateModels>
 							<generateModelDocumentation>false</generateModelDocumentation>
 							<generateModelTests>false</generateModelTests>
 							<generateSupportingFiles>true</generateSupportingFiles>
-							<modelPackage>dzone.aman.swagger.model</modelPackage>
-							<apiPackage>dzone.aman.swagger.api</apiPackage>
+							<modelPackage>recero.modelsEntityAndResponse</modelPackage>
+							<apiPackage>recero.apiInterface</apiPackage>
 							<configOptions>
 								<dateLibrary>java8</dateLibrary>
-								<sourceFolder>swagger</sourceFolder>
+								<sourceFolder>ApiGenerated</sourceFolder>
 								<interfaceOnly>true</interfaceOnly>
 								<useTags>true</useTags>
+
 							</configOptions>
 							<output>${project.build.directory}/generated-sources/java</output>
 						</configuration>

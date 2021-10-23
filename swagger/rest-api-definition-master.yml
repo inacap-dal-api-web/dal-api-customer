@@ -3,6 +3,7 @@ info:
   version: 1.0.0
   title: dal-recero-access
   description: ''
+  contact:
 host: 'localhost:8080'
 basePath: /
 tags:
