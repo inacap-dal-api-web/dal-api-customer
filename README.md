@@ -100,21 +100,13 @@ Fork
 
 
 
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-
-
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (Recero) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
 
 ## Expresiones de Gratitud 🎁
 
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
+
 
 
 
@@ -172,6 +164,7 @@ to-be: <url>file:///Usuarios/usuario/Documents/dal-customer-recero-repository de
 
 ```
 
+# Este es el archivo que permite construir desde el código de Swagger las clases que vamos a utilizar
 ```xml
 <plugin>
 	<groupId>io.swagger</groupId>
