@@ -123,7 +123,9 @@ Este proyecto está bajo la Licencia (Recero) - mira el archivo [LICENSE.md](LIC
 
 # Inacap dal-api-custome
 
-**Configuración de proyecto**
+**Configuración de proyecto** 
+Esta configuración es de aspecto individual, y debe de ser integrada por cada uno del equipo. 
+
 
 Versión: 1.0.0
 Branch: feature/develop
@@ -139,9 +141,38 @@ Indicaciones de subida a Rama Master:
                         feature/**mapas**
                         **etc**
 
-# Code generation 
+# Primera linea de XML a configurar
+```
+Debemos entregar una ruta donde Maven creara nuestros diferentes archivos de compilación de trabajo, incluidos documentos, .Jar
+Etc, desde acá maven sabra que puede guardar recursos que se iran generando cuando compilemos o hagamos BootRun al Application.
+```
+
+# La ruta debe de ser creada
+
+```
+Es tan simple como solamente crear dentro de documentos alguna carpeta llamada dal-customer-recero-repository
+```
+# Ejemplo
+```
+as-is: <url>file:///Users/usuario/repositorio</url> para Mac o Linux
+to-be: <url>file:///Usuarios/usuario/Documents/dal-customer-recero-repository de Windows</url> para Mac o Linux
+```
+
 ```xml
 
+	<distributionManagement>
+		<repository>
+			<uniqueVersion>false</uniqueVersion>
+			<id>recero</id>
+			<name>Corporate Repository</name>
+			<url>file:///Users/usuario/repositorio</url> 
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
+
+```
+
+```xml
 <plugin>
 	<groupId>io.swagger</groupId>
 	<artifactId>swagger-codegen-maven-plugin</artifactId>
@@ -179,4 +210,4 @@ Indicaciones de subida a Rama Master:
 </plugin>
 
 ```
- You can check for more from [dzone.com](https://dzone.com/articles/openapi-swagger-and-spring-boot-integration)
+
