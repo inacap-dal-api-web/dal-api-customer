@@ -1,0 +1,77 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: dal-recero-access
+  description: ''
+host: 'localhost:8080'
+basePath: /
+tags:
+  - name: User
+    description: 'User related endpoints'
+paths:
+  '/api-recero/user/login{num_rut}':
+    get:
+      summary: Get user information
+      operationId: getUserInfo
+      tags:
+        - User
+      produces:
+        - application/json
+      parameters:
+        - name: num_rut
+          in: path
+          type: string
+          required: true
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/response-model-user'
+        '401':
+          $ref: '#/responses/response-unauthorized'
+        '500':
+          $ref: '#/responses/response-internal-server-error-500'
+definitions:
+  response-base:
+    type: object
+    properties:
+      userDetails:
+        $ref: '#/definitions/model-user'
+  model-user:
+    type: object
+    properties:
+      id_login:
+        type: integer
+        description: "Primary Key from entity login"
+        example: 1
+      id_perfil:
+        type: integer
+        description: "Foreign key from entity profile"
+        example: 1
+      rut_num_usuario:
+        type: string
+        description: "Digital Number Identification from Chile to rut customer"
+        example: "Enterprise DNI 88544647-9 - Natural Person DNI 18278775-1"
+      is_valid:
+        type: string
+        description: "When parameters have data user login it's not available to login, when is empty is allowed"
+        example: "2021-03-24 16:48:05.591"
+  response-model-user:
+    allOf:
+      - $ref: '#/definitions/response-base'
+      - type: object
+        properties:
+          userDetails:
+            $ref: '#/definitions/model-user'
+responses:
+  response-internal-server-error-500:
+    description: Internal Server error
+    schema:
+      $ref: '#/definitions/response-base'
+  response-unauthorized:
+    description: Authentication information is missing or invalid
+    schema:
+      $ref: '#/definitions/response-base'
+    headers:
+      WWW_Authenticate:
+        type: string
