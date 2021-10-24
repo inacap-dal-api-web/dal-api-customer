@@ -1,8 +1,8 @@
 package inacap.service;
 
 import inacap.gateway.LoginGateway;
-import dzone.aman.swagger.model.ResponseModelUser;
 import org.springframework.stereotype.Service;
+import recero.modelsEntityAndResponse.ResponseModelUser;
 
 @Service
 public class LoginService {

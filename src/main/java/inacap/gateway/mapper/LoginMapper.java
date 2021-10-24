@@ -1,8 +1,9 @@
 package inacap.gateway.mapper;
 
-import dzone.aman.swagger.model.ModelUser;
-import dzone.aman.swagger.model.ResponseModelUser;
+
 import org.springframework.stereotype.Component;
+import recero.modelsEntityAndResponse.ModelUser;
+import recero.modelsEntityAndResponse.ResponseModelUser;
 
 @Component
 public class LoginMapper {

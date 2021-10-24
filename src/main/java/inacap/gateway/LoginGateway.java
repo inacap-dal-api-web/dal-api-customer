@@ -2,9 +2,9 @@ package inacap.gateway;
 
 import inacap.dal.repositories.LoginRepository;
 import inacap.gateway.mapper.LoginMapper;
-import dzone.aman.swagger.model.ModelUser;
-import dzone.aman.swagger.model.ResponseModelUser;
 import org.springframework.stereotype.Repository;
+import recero.modelsEntityAndResponse.ModelUser;
+import recero.modelsEntityAndResponse.ResponseModelUser;
 
 @Repository
 public class LoginGateway {

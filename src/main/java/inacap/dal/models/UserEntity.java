@@ -9,17 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "LOGIN")
+@Table(name = "login")
 public class UserEntity {
 
     @Id
-    @Column(name = "id_login")
+    @Column(name = "Id_Login")
     private Integer id_login;
-    @Column(name = "id_perfil")
+    @Column(name = "Id_Perfil")
     private Integer id_perfil;
-    @Column(name = "id_rut_num_usuario")
+    @Column(name = "Rut_Num_Usuario")
     private Integer rut_num_usuario;
-    @Column(name = "is_valid")
+    @Column(name = "Is_Valid")
     private String is_valid;
 
 

@@ -1,9 +1,8 @@
 swagger: '2.0'
 info:
-  version: 1.0.0
+  version: 1.1.0
   title: dal-recero-access
   description: ''
-  contact:
 host: 'localhost:8080'
 basePath: /
 tags:
@@ -32,12 +31,40 @@ paths:
           $ref: '#/responses/response-unauthorized'
         '500':
           $ref: '#/responses/response-internal-server-error-500'
+  '/api-recero/user/profile{id_perfil}':
+    get:
+      summary: Get profile information
+      operationId: getProfileInfo
+      tags:
+        - Profile
+      produces:
+        - application/json
+      parameters:
+        - name: id_perfil
+          in: path
+          type: integer
+          required: true
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/response-model-profile'
+        '401':
+          $ref: '#/responses/response-unauthorized'
+        '500':
+          $ref: '#/responses/response-internal-server-error-500'
 definitions:
-  response-base:
+  notification:
     type: object
     properties:
-      userDetails:
-        $ref: '#/definitions/model-user'
+      category:
+        description: Category of this notification as a Http status
+        type: string
+        example: bad request
+      code:
+        description: Notification code. First character indicates severity (E,W,I).
+        type: string
+        example: bad request
   model-user:
     type: object
     properties:
@@ -57,6 +84,37 @@ definitions:
         type: string
         description: "When parameters have data user login it's not available to login, when is empty is allowed"
         example: "2021-03-24 16:48:05.591"
+  model-profile:
+    type: object
+    properties:
+      id_perfil:
+        type: integer
+        description: "foregein key from entity profile"
+        example: 1
+      descripcion_profile:
+        type: string
+        description: "description profile"
+        example: "Hola soy usuario de recero"
+      num_rut_usuario:
+        type: string
+        description: "foreing key from entity user"
+        example: "106665898"
+      is_valid:
+        type: boolean
+        description: "verificacion de usuario"
+        example: "true"
+      fecha_creacion:
+        type: string
+        description: "date"
+        example: "2021-03-24 16:48:05.591"
+      contrasena_perfil:
+        type: string
+        description: "password for users"
+        example: "123abc"
+      id_roles:
+        type: integer
+        description: "foreing key from entity roles"
+        example: 1
   response-model-user:
     allOf:
       - $ref: '#/definitions/response-base'
@@ -64,15 +122,21 @@ definitions:
         properties:
           userDetails:
             $ref: '#/definitions/model-user'
+  response-model-profile:
+    allOf:
+      - type: object
+        properties:
+          profileDetails:
+            $ref: '#/definitions/model-profile'
 responses:
   response-internal-server-error-500:
     description: Internal Server error
     schema:
-      $ref: '#/definitions/response-base'
+      $ref: '#/definitions/notification'
   response-unauthorized:
     description: Authentication information is missing or invalid
     schema:
-      $ref: '#/definitions/response-base'
+      $ref: '#/definitions/notification'
     headers:
       WWW_Authenticate:
         type: string
